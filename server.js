@@ -6,14 +6,15 @@ const server = express();
 server.use(express.json());
 
 
-server.listen(21262, () =>{
-    console.log('Express started at http://localhost:21262')
+server.listen(3000, () =>{
+    console.log('Express started at http://localhost:3000')
 })
 
 server.get('/', async (req, res) => {
     try {
         const {data} = await api.get('/EUR-BRL')
-        return res.send({data})
+        res.send({data})
+        console.log((data))
     } catch (error) {
         res.send({error: error.message})
     }
